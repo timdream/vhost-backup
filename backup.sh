@@ -58,6 +58,7 @@ echo 'rsync with remove host ...'
 date > $LOG.log
 echo >> $LOG.log
 rsync -e "ssh -i $SSHKEY" -avvzP --delete $RINFO:$RPATH/ $LPATH/ >> $LOG.log 2>&1
+date > $LPATH/backup-time.txt
 for DBDIR in `ls $LPATH/*/dbname.txt | awk '{print substr($1, 1, length($1)-11)}'`
 do
 	for DBNAME in `cat $DBDIR/dbname.txt`
